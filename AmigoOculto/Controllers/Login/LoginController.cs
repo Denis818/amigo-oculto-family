@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AmigoOculto.Controllers
+namespace AmigoOculto.Controllers.Login
 {
     public class LoginController : Controller
     {

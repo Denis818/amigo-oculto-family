@@ -31,6 +31,7 @@ namespace AmigoOculto.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Descricao")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -47,12 +48,11 @@ namespace AmigoOculto.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("QuemSelecionou")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Senha")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("SugestaoId")

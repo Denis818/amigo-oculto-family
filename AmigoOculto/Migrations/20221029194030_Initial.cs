@@ -57,7 +57,7 @@ namespace AmigoOculto.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Descricao = table.Column<string>(type: "text", nullable: true)
+                    Descricao = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -70,10 +70,9 @@ namespace AmigoOculto.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Nome = table.Column<string>(type: "text", nullable: true),
+                    Nome = table.Column<string>(type: "text", nullable: false),
                     SugestaoId = table.Column<int>(type: "integer", nullable: false),
-                    Senha = table.Column<string>(type: "text", nullable: true),
-                    QuemSelecionou = table.Column<string>(type: "text", nullable: true)
+                    QuemSelecionou = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

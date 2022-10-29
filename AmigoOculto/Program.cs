@@ -2,14 +2,14 @@ using AmigoOculto.Extensios;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// ConfigureServices
 builder.Services.AddControllersWithViews();
 
 builder.Services.StringConections();
-builder.Services.IdentityDependency();
+builder.Services.DependencyInjection();
 
 
-// ConfigureServices
+// Configure
 var app = builder.Build();
 
 

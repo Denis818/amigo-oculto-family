@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AmigoOculto.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221029181353_Initial")]
+    [Migration("20221029194030_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -34,6 +34,7 @@ namespace AmigoOculto.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Descricao")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
@@ -50,12 +51,11 @@ namespace AmigoOculto.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("QuemSelecionou")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Senha")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("SugestaoId")
