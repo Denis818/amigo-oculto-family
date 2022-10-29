@@ -22,7 +22,6 @@ namespace AmigoOculto.Controllers
             var user = new IdentityUser
             {
                 UserName = userDto.Name,
-                Email = userDto.Password
             };
 
             var userCreate = await _userManager.CreateAsync(user, userDto.Password);
