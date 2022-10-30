@@ -1,20 +1,34 @@
-﻿using AmigoOculto.Models;
+﻿using AmigoOculto.Interfaces;
+using AmigoOculto.Models;
+using AmigoOculto.Models.User;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace AmigoOculto.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ISecretFriend _secretFriend;
+        private readonly UserManager<User> _userManager;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ISecretFriend secretFriend, UserManager<User> userManager = null)
         {
             _logger = logger;
+            _secretFriend = secretFriend;
+            _userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+           /* var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userName = User.FindFirstValue(ClaimTypes.Name);*/
+
+
+
+           // await _secretFriend.GenerateSecretFriend();
             return View();
         }
 

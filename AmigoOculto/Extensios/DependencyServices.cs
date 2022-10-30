@@ -1,5 +1,6 @@
 ﻿using AmigoOculto.DbContext;
 using AmigoOculto.Interfaces;
+using AmigoOculto.Models.User;
 using AmigoOculto.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -22,8 +23,9 @@ namespace AmigoOculto.Extensios
         public static void DependencyInjection(this IServiceCollection services)
         {
             services.AddScoped<ISecretFriend, SecretFriend>();
+            services.AddScoped<HttpContextAccessor>();
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
         }

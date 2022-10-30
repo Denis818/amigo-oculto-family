@@ -1,7 +1,9 @@
-﻿namespace AmigoOculto.Interfaces
+﻿using AmigoOculto.Models.User;
+
+namespace AmigoOculto.Interfaces
 {
     public interface ISecretFriend
     {
-        Task GenerateSecretFriend();
+        Task<string> GenerateSecretFriend();
     }
 }
