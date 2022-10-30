@@ -51,6 +51,8 @@ namespace AmigoOculto.Controllers.Login
 
             await _signInManager.SignInAsync(user, false);
 
+            await CodigoSugestaoPresente(userDto);
+
             return RedirectToAction("Login", "Login");
         }
 
@@ -66,8 +68,6 @@ namespace AmigoOculto.Controllers.Login
 
                 return BadRequest(ModelState);
             }
-
-            await CodigoSugestaoPresente(userDto);
 
             return RedirectToAction("Index", "Home");
         }
