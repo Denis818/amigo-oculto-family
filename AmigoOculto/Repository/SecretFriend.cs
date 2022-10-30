@@ -21,13 +21,13 @@ namespace AmigoOculto.Repository
             Random random = new();
 
             var listUsers = await _context.User.Where(user => user.FoiEscolhido == false 
-            && _httpContext.HttpContext.User.Identity.Name != user.Nome).ToListAsync();
+            && _httpContext.HttpContext.User.Identity.Name != user.UserName).ToListAsync();
 
             var userEscolhido =  listUsers[random.Next(listUsers.Count)];
 
             await UserEscolhido(userEscolhido);
 
-            return userEscolhido.Nome;
+            return userEscolhido.UserName;
         }
 
         public async Task UserEscolhido(User user)

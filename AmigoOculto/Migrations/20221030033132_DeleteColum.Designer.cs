@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AmigoOculto.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221029234448_initial")]
-    partial class initial
+    [Migration("20221030033132_DeleteColum")]
+    partial class DeleteColum
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -255,18 +255,17 @@ namespace AmigoOculto.Migrations
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
+                    b.Property<int>("Codigo")
+                        .HasColumnType("integer");
+
                     b.Property<bool>("FoiEscolhido")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("Nome")
-                        .IsRequired()
+                    b.Property<string>("Password")
                         .HasColumnType("text");
 
                     b.Property<string>("QuemSelecionou")
                         .HasColumnType("text");
-
-                    b.Property<int>("SugestaoId")
-                        .HasColumnType("integer");
 
                     b.HasDiscriminator().HasValue("User");
                 });

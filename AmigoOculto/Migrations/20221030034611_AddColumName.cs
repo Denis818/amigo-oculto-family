@@ -5,15 +5,15 @@
 namespace AmigoOculto.Migrations
 {
     /// <inheritdoc />
-    public partial class ColunaCod : Migration
+    public partial class AddColumName : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "Codigo",
+            migrationBuilder.AddColumn<string>(
+                name: "Name",
                 table: "AspNetUsers",
-                type: "integer",
+                type: "text",
                 nullable: true);
         }
 
@@ -21,7 +21,7 @@ namespace AmigoOculto.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Codigo",
+                name: "Name",
                 table: "AspNetUsers");
         }
     }

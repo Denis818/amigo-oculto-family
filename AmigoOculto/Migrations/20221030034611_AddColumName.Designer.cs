@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AmigoOculto.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20221029234749_ColunaCod")]
-    partial class ColunaCod
+    [Migration("20221030034611_AddColumName")]
+    partial class AddColumName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -261,15 +261,14 @@ namespace AmigoOculto.Migrations
                     b.Property<bool>("FoiEscolhido")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("Nome")
-                        .IsRequired()
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
                         .HasColumnType("text");
 
                     b.Property<string>("QuemSelecionou")
                         .HasColumnType("text");
-
-                    b.Property<int>("SugestaoId")
-                        .HasColumnType("integer");
 
                     b.HasDiscriminator().HasValue("User");
                 });

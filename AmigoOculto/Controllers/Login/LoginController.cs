@@ -1,5 +1,4 @@
 ﻿using AmigoOculto.DbContext;
-using AmigoOculto.Models.Dtos;
 using AmigoOculto.Models.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -35,31 +34,31 @@ namespace AmigoOculto.Controllers.Login
 
         [HttpPost("register")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> ResisterUser([FromForm] UserDto userDto)
+        public async Task<IActionResult> ResisterUser([FromForm] User user)
         {
-            var user = new User
+            var usuario = new User
             {
-                UserName = userDto.Name,
+                UserName = user.Name,
             };
 
-            var userCreate = await _userManager.CreateAsync(user, userDto.Password);
+            var userCreate = await _userManager.CreateAsync(usuario, user.Password);
 
             if (!userCreate.Succeeded)
             {
                 return BadRequest(userCreate.Errors);
             }
 
-            await _signInManager.SignInAsync(user, false);
+            await _signInManager.SignInAsync(usuario, false);
 
-            await CodigoSugestaoPresente(userDto);
+            await CodigoSugestaoPresente(user);
 
             return RedirectToAction("Login", "Login");
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromForm] UserDto userDto)
+        public async Task<IActionResult> Login([FromForm] User user)
         {
-            var userLogin = await _signInManager.PasswordSignInAsync(userDto.Name, userDto.Password,
+            var userLogin = await _signInManager.PasswordSignInAsync(user.Name, user.Password,
                                                                      isPersistent: false, lockoutOnFailure: false);
 
             if (!userLogin.Succeeded)
@@ -72,13 +71,13 @@ namespace AmigoOculto.Controllers.Login
             return RedirectToAction("Index", "Home");
         }
 
-        public async Task CodigoSugestaoPresente(UserDto user)
+        public async Task CodigoSugestaoPresente(User user)
         {
-            var sugetsao = new SugestoesPresente();
-
-
-            sugetsao.Name = user.Name;
-            sugetsao.Codigo = user.Codigo;
+            var sugetsao = new SugestoesPresente
+            {
+                Name = user.UserName,
+                Codigo = user.Codigo
+            };
 
             await _context.SugestoesPresente.AddAsync(sugetsao);
             await _context.SaveChangesAsync();

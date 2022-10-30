@@ -25,11 +25,12 @@ namespace AmigoOculto.Controllers
         {
            /* var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userName = User.FindFirstValue(ClaimTypes.Name);*/
-
-
-
-           // await _secretFriend.GenerateSecretFriend();
             return View();
+        }
+
+        public async Task<IActionResult> GerarNome()
+        {
+            return View(await _secretFriend.GenerateSecretFriend(););
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

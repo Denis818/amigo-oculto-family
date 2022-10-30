@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AmigoOculto.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -32,10 +32,11 @@ namespace AmigoOculto.Migrations
                 {
                     Id = table.Column<string>(type: "text", nullable: false),
                     Discriminator = table.Column<string>(type: "text", nullable: false),
-                    Nome = table.Column<string>(type: "text", nullable: true),
-                    SugestaoId = table.Column<int>(type: "integer", nullable: true),
+                    Name = table.Column<string>(type: "text", nullable: true),
                     QuemSelecionou = table.Column<string>(type: "text", nullable: true),
                     FoiEscolhido = table.Column<bool>(type: "boolean", nullable: true),
+                    Codigo = table.Column<int>(type: "integer", nullable: true),
+                    Password = table.Column<string>(type: "text", nullable: true),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
