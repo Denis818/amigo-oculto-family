@@ -1,4 +1,5 @@
-﻿using AmigoOculto.Interfaces;
+﻿using AmigoOculto.DbContext;
+using AmigoOculto.Interfaces;
 using AmigoOculto.Models;
 using AmigoOculto.Models.User;
 using Microsoft.AspNetCore.Identity;
@@ -21,7 +22,7 @@ namespace AmigoOculto.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
            /* var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userName = User.FindFirstValue(ClaimTypes.Name);*/
@@ -30,7 +31,7 @@ namespace AmigoOculto.Controllers
 
         public async Task<IActionResult> GerarNome()
         {
-            return View(await _secretFriend.GenerateSecretFriend(););
+            return View(await _secretFriend.GenerateSecretFriend());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -75,7 +75,7 @@ namespace AmigoOculto.Controllers.Login
         {
             var sugetsao = new SugestoesPresente
             {
-                Name = user.UserName,
+                Name = user.Name,
                 Codigo = user.Codigo
             };
 
